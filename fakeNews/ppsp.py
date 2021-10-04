@@ -21,15 +21,17 @@ def action_parser(link):
     if len(data) == 0:
         data = soup.find_all('span', attrs={'class': 'article__info-date-modified'})
 
-    print(zagolovok)
+    # print(zagolovok)
 
-    for i in range(len(textp)):
-        print(textp[i].text)
-    if len(data) != 0:
-        for i in range(len(data)):
-            print(data[i].text)
-    else:
-        print("дата публикации на новстоном ресусре не указана")
+    # for i in range(len(textp)):
+    #     print(textp[i].text)
+    # if len(data) != 0:
+    #     for i in range(len(data)):
+    #         print(data[i].text)
+    # else:
+    #     print("дата публикации на новстоном ресусре не указана")
+
+    print(data.text)
 
     domain = urlparse(link).netloc
     if (int(domain.find("www.")) != -1):
@@ -50,17 +52,19 @@ def action_parser(link):
 
         data = r.text
         jsonToPython = json.loads(data)
-    else:
 
-        print(" - There Is A Problem")
-        print(" - Checking The Connection")
-        print(" - Check If Website Working ")
-    textpp = ""
-    for i in range(len(textp)):
-        a = textp[i].text
-        textpp = textpp + a
-        print('*********************************************************************')
-    return 0
+        list = [zagolovok, age[str:(end - 1)], textp]
+        return list
+    # else:
+    #
+    #     print(" - There Is A Problem")
+    #     print(" - Checking The Connection")
+    #     print(" - Check If Website Working ")
+    # textpp = ""
+    # for i in range(len(textp)):
+    #     a = textp[i].text
+    #     textpp = textpp + a
+    #     print('*********************************************************************')
 
 # words = 0
 # for i in range(len(textpp)):
